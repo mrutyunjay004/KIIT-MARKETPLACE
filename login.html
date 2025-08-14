@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Login - KIIT Marketplace</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header>
+    <h1><img src="images/kiit-logo.jpeg" alt="KIIT Logo">KIIT</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="listings.html">Buy</a>
+      <a href="post.html">Sell</a>
+      <a href="login.html" id="login-link">Login</a>
+      <span id="user-email" style="margin-left: 20px;"></span>
+      <button id="logout-btn" style="display:none; margin-left: 10px;">Logout</button>
+    </nav>
+  </header>
+
+  <main class="login-container">
+    <h2>Login to KIIT Marketplace</h2>
+    <form id="login-form">
+      <label for="email">Email</label>
+      <input type="email" id="email" placeholder="Enter your email" required />
+      <label for="password">Password</label>
+      <input type="password" id="password" placeholder="Enter your password" required />
+      <button type="submit">Login</button>
+    </form>
+    <p>Don't have an account? <a href="signup.html">Sign up here</a></p>
+    <div id="login-error" class="error-message"></div>
+  </main>
+
+  <footer>
+    <div class="footer-container">
+      <!-- Same footer content as index.html -->
+      <div class="footer-section">
+        <h4>Popular Location</h4>
+        <ul><li>Bhubaneswar KIIT Campus</li></ul>
+      </div>
+      <div class="footer-section">
+        <h4>Trending Location</h4>
+        <ul><li>Bhubaneswar KIIT Campus</li></ul>
+      </div>
+      <div class="footer-section">
+        <h4>About Us</h4>
+        <ul>
+          <li>About KIIT Marketplace</li>
+          <li>Careers</li>
+          <li>Contact Us</li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>KIIT Marketplace</h4>
+        <ul>
+          <li>Help</li>
+          <li>Sitemap</li>
+          <li>Legal & Privacy</li>
+        </ul>
+      </div>
+      <div class="footer-social">
+        <h4>Follow Us</h4>
+        <div class="footer-social-icons">
+          <img src="https://cdn-icons-png.flaticon.com/512/2111/2111393.png" width="30" alt="Facebook">
+          <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" width="30" alt="Twitter">
+          <img src="https://cdn-icons-png.flaticon.com/512/1384/1384063.png" width="30" alt="YouTube">
+          <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" width="30" alt="Instagram">
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      Serving Bhubaneswar KIIT Campus | All rights reserved © 2006-2025 OLX
+    </div>
+  </footer>
+
+  <script src="firebase.js"></script>
+
+  <script>
+    // Show logged in user email or toggle login/logout
+    auth.onAuthStateChanged(user => {
+      if (user) {
+        document.getElementById('user-email').textContent = user.email;
+        document.getElementById('login-link').style.display = 'none';
+        document.getElementById('logout-btn').style.display = 'inline';
+      } else {
+        document.getElementById('user-email').textContent = '';
+        document.getElementById('login-link').style.display = 'inline';
+        document.getElementById('logout-btn').style.display = 'none';
+      }
+    });
+
+    // Logout button
+    document.getElementById('logout-btn').addEventListener('click', () => {
+      auth.signOut().then(() => {
+        window.location.href = 'index.html';
+      });
+    });
+
+    // Login form submit
+    const loginForm = document.getElementById('login-form');
+    const loginError = document.getElementById('login-error');
+
+    loginForm.addEventListener('submit', e => {
+      e.preventDefault();
+      const email = loginForm.email.value.trim();
+      const password = loginForm.password.value.trim();
+
+      loginError.textContent = '';
+
+      auth.signInWithEmailAndPassword(email, password)
+        .then(() => {
+          // Redirect to home or listings after login
+          window.location.href = 'index.html';
+        })
+        .catch(err => {
+          loginError.textContent = err.message;
+        });
+    });
+  </script>
+
+</body>
+</html>

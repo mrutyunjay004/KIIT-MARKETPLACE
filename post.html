@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Post an Ad - KIIT Marketplace</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header>
+    <h1><img src="images/kiit-logo.jpeg" alt="KIIT Logo">KIIT</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="listings.html">Buy</a>
+      <a href="post.html">Sell</a>
+      <a href="login.html" id="login-link">Login</a>
+      <span id="user-email" style="margin-left: 20px;"></span>
+      <button id="logout-btn" style="display:none; margin-left: 10px;">Logout</button>
+    </nav>
+  </header>
+
+  <main class="post-container">
+    <h2>Post Your Item for Sale</h2>
+    <form id="post-form">
+      <label for="title">Title</label>
+      <input type="text" id="title" placeholder="Item title" required />
+
+      <label for="description">Description</label>
+      <textarea id="description" placeholder="Describe your item" required></textarea>
+
+      <label for="price">Price (₹)</label>
+      <input type="number" id="price" placeholder="Enter price" required min="1" />
+
+      <label for="category">Category</label>
+      <select id="category" required>
+        <option value="">Select Category</option>
+        <option>Mobiles</option>
+        <option>Laptops</option>
+        <option>Books</option>
+        <option>Furniture</option>
+        <option>Bikes</option>
+        <option>Appliances</option>
+        <option>Room Rentals</option>
+        <option>Study Materials</option>
+        <option>Clothing & Accessories</option>
+        <option>Watches & Wearables</option>
+        <option>Sports Equipment</option>
+        <option>Stationery</option>
+        <option>Project Kits</option>
+        <option>Gaming Consoles</option>
+        <option>Musical Instruments</option>
+        <option>Hostel Essentials</option>
+        <option>Fitness Equipment</option>
+        <option>Cycle & E-scooters</option>
+        <option>Pet Accessories</option>
+        <option>Art Supplies</option>
+        <option>Event Tickets</option>
+        <option>Costumes</option>
+        <option>Electronics Components</option>
+        <option>Camera & Drones</option>
+        <option>Room Decor</option>
+        <option>Health Accessories</option>
+      </select>
+
+      <button type="submit">Post Ad</button>
+    </form>
+    <div id="post-message" class="success-message"></div>
+    <div id="post-error" class="error-message"></div>
+  </main>
+
+  <footer>
+    <div class="footer-container">
+      <!-- Same footer content as index.html -->
+      <div class="footer-section">
+        <h4>Popular Location</h4>
+        <ul><li>Bhubaneswar KIIT Campus</li></ul>
+      </div>
+      <div class="footer-section">
+        <h4>Trending Location</h4>
+        <ul><li>Bhubaneswar KIIT Campus</li></ul>
+      </div>
+      <div class="footer-section">
+        <h4>About Us</h4>
+        <ul>
+          <li>About KIIT Marketplace</li>
+          <li>Careers</li>
+          <li>Contact Us</li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>KIIT Marketplace</h4>
+        <ul>
+          <li>Help</li>
+          <li>Sitemap</li>
+          <li>Legal & Privacy</li>
+        </ul>
+      </div>
+      <div class="footer-social">
+        <h4>Follow Us</h4>
+        <div class="footer-social-icons">
+          <img src="https://cdn-icons-png.flaticon.com/512/2111/2111393.png" width="30" alt="Facebook">
+          <img src

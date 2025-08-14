@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Post Item - KIIT Marketplace</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 600px; margin: 20px auto; }
+    label { display: block; margin-top: 15px; }
+    input, textarea, button { width: 100%; padding: 8px; margin-top: 5px; }
+    #error-message { color: red; display: none; margin-top: 10px; }
+    #success-message { color: green; display: none; margin-top: 10px; }
+  </style>
+</head>
+<body>
+
+  <h2>Post a New Item</h2>
+
+  <label for="title">Title:</label>
+  <input type="text" id="title" placeholder="Item title" />
+
+  <label for="price">Price (₹):</label>
+  <input type="number" id="price" placeholder="Enter price" />
+
+  <label for="desc">Description:</label>
+  <textarea id="desc" rows="4" placeholder="Enter item description"></textarea>
+
+  <!-- Add this for image upload -->
+  <!-- <label for="image">Image:</label>
+  <input type="file" id="image" accept="image/*" /> -->
+
+  <button id="post-button" onclick="postItem()">Post</button>
+
+  <div id="error-message"></div>
+  <div id="success-message"></div>
+
+  <script type="module" src="items.js"></script>
+
+</body>
+</html>

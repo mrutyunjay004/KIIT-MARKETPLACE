@@ -1,0 +1,297 @@
+/* General Reset and Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: #0a0a0a;
+  color: #f0f0f0;
+  line-height: 1.6;
+}
+
+a {
+  color: #00ffcc;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: #ff00cc;
+}
+
+header {
+  background-color: #111;
+  padding: 15px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 2px solid #00ffcc;
+}
+
+header h1 {
+  display: flex;
+  align-items: center;
+  font-size: 24px;
+  color: #00ffcc;
+}
+
+header h1 img {
+  width: 40px;
+  margin-right: 10px;
+  border-radius: 50%;
+}
+
+nav a {
+  margin: 0 15px;
+  font-weight: bold;
+}
+
+nav button {
+  background-color: transparent;
+  border: 1px solid #ff00cc;
+  padding: 5px 10px;
+  color: #ff00cc;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+nav button:hover {
+  background-color: #ff00cc;
+  color: #000;
+}
+
+/* Hero Section */
+.hero {
+  padding: 60px 20px;
+  text-align: center;
+  background: linear-gradient(135deg, #1a1a1a, #0d0d0d);
+  color: #ffffff;
+}
+
+.hero h2 {
+  font-size: 36px;
+  color: #00ffcc;
+}
+
+.hero p {
+  max-width: 600px;
+  margin: 20px auto;
+  font-size: 18px;
+}
+
+.cta-button {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 12px 25px;
+  background-color: #ff00cc;
+  color: #fff;
+  border-radius: 8px;
+  font-weight: bold;
+  transition: transform 0.3s ease;
+}
+
+.cta-button:hover {
+  transform: scale(1.05);
+}
+
+/* Category Section */
+.categories {
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.categories h3 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #00ffcc;
+}
+
+.category-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+}
+
+.category, .dropdown-button {
+  background-color: #111;
+  padding: 15px 25px;
+  border: 1px solid #00ffcc;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.category:hover, .dropdown-button:hover {
+  background-color: #00ffcc;
+  color: #000;
+}
+
+.dropdown {
+  position: relative;
+}
+
+.dropdown-content {
+  position: absolute;
+  background-color: #111;
+  border: 1px solid #00ffcc;
+  padding: 10px;
+  display: none;
+  flex-direction: column;
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 99;
+  width: 200px;
+}
+
+.dropdown:hover .dropdown-content {
+  display: flex;
+}
+
+/* Item Listing Section */
+.item-listing {
+  padding: 40px 20px;
+}
+
+.item-listing h3 {
+  text-align: center;
+  color: #00ffcc;
+  margin-bottom: 20px;
+}
+
+.item-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.item {
+  background-color: #1a1a1a;
+  padding: 20px;
+  border-radius: 10px;
+  border: 1px solid #00ffcc;
+  transition: transform 0.3s ease;
+}
+
+.item:hover {
+  transform: scale(1.03);
+}
+
+.item h4 {
+  color: #ff00cc;
+  margin-bottom: 8px;
+}
+
+/* Promo Section */
+.promo-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  background: #111;
+  padding: 40px 20px;
+  border-top: 2px solid #00ffcc;
+  border-bottom: 2px solid #00ffcc;
+}
+
+.promo-text {
+  flex: 1;
+  padding: 20px;
+  color: #ffffff;
+}
+
+.promo-text h1 {
+  font-size: 24px;
+  color: #00ffcc;
+}
+
+.promo-text p {
+  margin: 15px 0;
+  font-size: 16px;
+}
+
+.promo-links img {
+  width: 150px;
+  margin-right: 10px;
+}
+
+.promo-image img {
+  width: 120px;
+  border-radius: 50%;
+}
+
+/* Footer */
+footer {
+  background-color: #0d0d0d;
+  color: #aaa;
+  padding: 30px 20px;
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  border-bottom: 1px solid #333;
+  padding-bottom: 20px;
+}
+
+.footer-section {
+  margin: 10px 20px;
+}
+
+.footer-section h4 {
+  color: #00ffcc;
+  margin-bottom: 10px;
+}
+
+.footer-section ul {
+  list-style: none;
+}
+
+.footer-section ul li {
+  margin-bottom: 6px;
+  font-size: 14px;
+}
+
+.footer-social {
+  margin: 10px 20px;
+  text-align: center;
+}
+
+.footer-social-icons img {
+  margin: 5px;
+  transition: transform 0.2s ease;
+}
+
+.footer-social-icons img:hover {
+  transform: scale(1.1);
+}
+
+.footer-bottom {
+  text-align: center;
+  padding: 15px 0;
+  font-size: 13px;
+  color: #555;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .promo-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  nav a {
+    margin: 0 10px;
+  }
+
+  .footer-container {
+    flex-direction: column;
+    align-items: center;
+  }
+}

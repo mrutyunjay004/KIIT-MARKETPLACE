@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>KIIT Marketplace</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header>
+    <h1><img src="images/kiit-logo.jpeg" alt="KIIT Logo">KIIT MARKETPLACE</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="listings.html">Buy</a>
+      <a href="post.html">Sell</a>
+      <a href="login.html" id="login-link">Login</a>
+      <span id="user-email" style="margin-left: 20px;"></span>
+      <button id="logout-btn" style="display:none; margin-left: 10px;">Logout</button>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h2>Welcome KITIES</h2>
+    <p>Buy, sell and find just about anything around Bhubaneswar KIIT Campus. KIIT Marketplace connects you with real students near you.</p>
+    <a href="post.html" class="cta-button">Start Selling</a>
+  </section>
+
+  <section class="categories">
+    <h3>Browse Categories</h3>
+    <div class="category-grid">
+      <div class="category">Mobiles</div>
+      <div class="category">Laptops</div>
+      <div class="category">Books</div>
+      <div class="category">Furniture</div>
+      <div class="category">Bikes</div>
+      <div class="category">Appliances</div>
+      <div class="category">Room Rentals</div>
+      <div class="category">Study Materials</div>
+      <div class="dropdown">
+        <div class="dropdown-button">All Categories</div>
+        <div class="dropdown-content">
+          <div>Clothing & Accessories</div>
+          <div>Watches & Wearables</div>
+          <div>Sports Equipment</div>
+          <div>Stationery</div>
+          <div>Project Kits</div>
+          <div>Gaming Consoles</div>
+          <div>Musical Instruments</div>
+          <div>Hostel Essentials</div>
+          <div>Fitness Equipment</div>
+          <div>Cycle & E-scooters</div>
+          <div>Pet Accessories</div>
+          <div>Art Supplies</div>
+          <div>Event Tickets</div>
+          <div>Costumes</div>
+          <div>Electronics Components</div>
+          <div>Camera & Drones</div>
+          <div>Room Decor</div>
+          <div>Health Accessories</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="item-listing">
+    <h3>Latest Listings Around KIIT</h3>
+    <div class="item-grid" id="item-grid">
+      <!-- Items will be loaded here from Firebase -->
+    </div>
+  </section>
+
+  <section class="promo-container">
+    <div class="promo-text">
+      <h1>TRY THE KIIT MARKETPLACE APP</h1>
+      <p>Buy, sell and find just about anything using the app on your mobile within KIIT Campus.</p>
+      <div class="promo-links">
+        <img src="https://statics.olx.in/external/base/img/appstore_2x.webp" alt="App Store">
+        <img src="https://statics.olx.in/external/base/img/playstore_2x.webp" alt="Google Play">
+      </div>
+    </div>
+    <div class="promo-image">
+      <img src="images/kiit-logo.jpeg" alt="KIIT Logo Highlight">
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-container">
+      <div class="footer-section">
+        <h4>Popular Location</h4>
+        <ul><li>Bhubaneswar KIIT Campus</li></ul>
+      </div>
+      <div class="footer-section">
+        <h4>Trending Location</h4>
+        <ul><li>Bhubaneswar KIIT Campus</li></ul>
+      </div>
+      <div class="footer-section">
+        <h4>About Us</h4>
+        <ul>
+          <li>About KIIT Marketplace</li>
+          <li>Careers</li>
+          <li>Contact Us</li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>KIIT Marketplace</h4>
+        <ul>
+          <li>Help</li>
+          <li>Sitemap</li>
+          <li>Legal & Privacy</li>
+        </ul>
+      </div>
+      <div class="footer-social">
+        <h4>Follow Us</h4>
+        <div class="footer-social-icons">
+          <img src="https://cdn-icons-png.flaticon.com/512/2111/2111393.png" width="30" alt="Facebook">
+          <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" width="30" alt="Twitter">
+          <img src="https://cdn-icons-png.flaticon.com/512/1384/1384063.png" width="30" alt="YouTube">
+          <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" width="30" alt="Instagram">
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      Serving Bhubaneswar KIIT Campus | All rights reserved © 2006-2025 OLX
+    </div>
+  </footer>
+
+  <script src="firebase.js"></script>
+  <script>
+    // Auth State Handling
+    auth.onAuthStateChanged(user => {
+      if (user) {
+        document.getElementById('user-email').textContent = user.email;
+        document.getElementById('login-link').style.display = 'none';
+        document.getElementById('logout-btn').style.display = 'inline';
+      } else {
+        document.getElementById('user-email').textContent = '';
+        document.getElementById('login-link').style.display = 'inline';
+        document.getElementById('logout-btn').style.display = 'none';
+      }
+    });
+
+    // Logout
+    document.getElementById('logout-btn').addEventListener('click', () => {
+      auth.signOut().then(() => window.location.href = 'index.html');
+    });
+
+    // Load latest items from Firebase Realtime Database
+    const dbRef = database.ref('ads');
+    dbRef.limitToLast(8).on('value', snapshot => {
+      const grid = document.getElementById('item-grid');
+      grid.innerHTML = '';
+      snapshot.forEach(child => {
+        const ad = child.val();
+        const item = document.createElement('div');
+        item.className = 'item';
+        item.innerHTML = `
+          <h4>${ad.title}</h4>
+          <p>₹${ad.price}</p>
+          <p><strong>Category:</strong> ${ad.category}</p>
+          <p><strong>Posted by:</strong> ${ad.userEmail}</p>
+        `;
+        grid.appendChild(item);
+      });
+    });
+  </script>
+
+</body>
+</html>
